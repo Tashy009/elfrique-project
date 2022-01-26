@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: "Lato", sans-serif !important;
+  scroll-behavior: smooth;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.bodySignup {
+  background-image: linear-gradient(90deg, #000000da, #000000da),
+    url("../images/signupbg.jpg");
+  height: 100vh;
+}
+.bodyLogin {
+  background-image: linear-gradient(90deg, #000000da, #000000da),
+    url("../images/loginbg.jpg");
+  height: 100vh;
+}
+.bodyForgot {
+  background-image: linear-gradient(90deg, #000000da, #000000da),
+    url("./images/forgotbg.jpg");
+  height: 100vh;
+}
+@media (max-width: 1560px) {
+  .bodySignup,
+  .bodyLogin {
+    height: auto;
+  }
+}
+@media (max-width: 991px) {
+  .bodyForgot {
+    height: auto;
+  }
+}
+
+/****************************/
+.authMain {
+  padding: 100px 10px 10px 10px;
+}
+.authMain .text-area {
+  color: #efffe9;
+}
+.authMain .text-area img {
+  padding-bottom: 25px;
+  width: 170px;
+  filter: drop-shadow(0px 0px 10px #ffffff15);
+}
+.authMain .text-area .text-first {
+  font-size: 22px;
+  font-weight: 400;
+}
+.authMain .text-area .line-rule {
+  width: 70px;
+  height: 2px;
+  background-color: #59a83e;
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+.authMain .text-area h1 {
+  font-weight: 700;
+  font-size: 40px;
+}
+.authMain .text-area .btn-div {
+  margin-top: 30px;
+}
+.authMain .text-area .btn-div p {
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+.authMain .text-area .btn-div .btn-btn {
+  padding: 15px 35px;
+  background-color: #59a83e;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  -webkit-transition: ease-out 0.6s;
+  -moz-transition: ease-out 0.6s;
+  transition: ease-out 0.3s;
+}
+.authMain .text-area .btn-div .btn-btn:hover {
+  box-shadow: inset 200px 0 0 0 #d18733;
+}
+.authMain .form-area {
+  background-color: #eeffea;
+  border-radius: 10px;
+}
+.authMain .form-area .header-form {
+  background-color: #4b9034;
+  width: 100%;
+  padding: 20px 10px;
+  color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+}
+.authMain .form-area .header-form h3 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 25px;
+}
+.authMain .form-area form {
+  padding: 10px 30px 30px 30px;
+}
+.authMain .form-area form label {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 25px;
+}
+.authMain .form-area form input {
+  width: 100%;
+  padding: 10px 1px;
+  border: none;
+  border-bottom: 1px solid #777777;
+  background-color: #eeffea;
+  font-size: 16px;
+  font-weight: 500;
+}
+.authMain .form-area form input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #59a83e;
+  background-color: #eeffea;
+}
+.authMain .form-area form input::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.authMain .form-area form input:-ms-input-placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.authMain .form-area form input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.authMain .form-area form button {
+  width: 150px;
+  text-align: center;
+  background-color: #59a83e;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 13px 5px;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.5s;
+}
+.authMain .form-area form button:hover {
+  background-color: #4b9034;
+}
+.authMain .form-area form .forgot {
+  margin-top: 10px;
+}
+.authMain .form-area form .forgot p {
+  text-align: right;
+}
+.authMain .form-area form .forgot p a {
+  color: #59a83e;
+  font-weight: 500;
+  text-decoration: none;
+}
+.authMain .form-area form .forgot p a:hover {
+  color: #488a32;
+}
+.authMain .text-under {
+  width: 300px;
+  margin: auto;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10px;
+}
+.authMain .text-under p a {
+  color: #59a83e;
+  text-decoration: none;
+}
+/************************/
+.bodyForgot .authMain {
+  padding: 50px 10px 10px 10px;
+}
+.bodyForgot .authMain img {
+  padding-bottom: 25px;
+  width: 170px;
+  filter: drop-shadow(0px 0px 10px #ffffff15);
+  margin: auto;
+  display: block;
+}
+.bodyForgot .authMain .form-area .header-form p {
+  text-align: center;
+  font-weight: 400;
+  font-size: 17px;
+}
+.bodyForgot .authMain .btn-div {
+  margin-top: 20px;
+  text-align: center;
+}
+.bodyForgot .authMain .btn-div p {
+  font-size: 18px;
+  padding-bottom: 5px;
+  color: #ffffff;
+}
+.bodyForgot .authMain .btn-div .btn-btn {
+  padding: 15px 35px;
+  background-color: #59a83e;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  -webkit-transition: ease-out 0.6s;
+  -moz-transition: ease-out 0.6s;
+  transition: ease-out 0.3s;
+}
+.bodyForgot .authMain .btn-div .btn-btn:hover {
+  box-shadow: inset 200px 0 0 0 #d18733;
+}
+@media (max-width: 1560px) {
+  .authMain {
+    padding: 100px 10px;
+  }
+}
+@media (max-width: 991px) {
+  .authMain {
+    padding: 20px 10px;
+  }
+  .authMain .text-area h1 {
+    display: none;
+  }
+  .authMain .form-area {
+    margin-top: 50px;
+  }
+  .authMain .text-area .btn-div {
+    margin-top: -10px;
+  }
+  .bodyForgot .authMain {
+    padding: 50px 10px 200px 10px;
+  }
+  .bodyForgot .authMain .form-area {
+    margin-top: -5px;
+  }
+}
+@media (max-width: 460px) {
+  .authMain {
+    padding: 20px 5px;
+  }
+  .authMain .form-area {
+    margin-top: 30px;
+  }
+  .authMain .form-area form {
+    padding: 10px 10px 30px 10px;
+  }
+  .authMain .form-area .header-form {
+    padding: 15px 10px;
+  }
+  .authMain .form-area .header-form h3 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .bodyForgot .authMain .form-area .header-form p {
+    text-align: left;
+    font-size: 15px;
+  }
+}

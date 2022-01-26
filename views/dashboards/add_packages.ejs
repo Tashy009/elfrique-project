@@ -1,0 +1,97 @@
+<!-- header -->
+<%- include("../partials/header_admin") %>
+<%- include("../partials/sidebar") %>
+
+<!-- Main Content -->
+<div class="main-content">
+    <%- include("../partials/alerts") %>
+   
+    
+        <section class="section">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <form action="<%= edit ? '/update/package' : '/add/package' %>" method="POST"
+                
+                            class="needs-validation" novalidate="">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4><%= edit ? 'Update Package' : 'Add New Package' %></h4>
+                                   
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name">Package Name</label>
+                                        <input id="name" type="text" class="form-control" name="name" tabindex="1"
+                                        value="<%= edit ? package.name : '' %>" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please fill in plan name
+                                        </div>
+                                    </div>
+                                    
+                                    <% if(edit) { %>
+                                        <input type="hidden" name="id" value="<%=package.id %>">
+                                    <% } %>
+                                
+                                    <div class="form-group">
+                                        <label for="price">From Price</label>
+                                        <input id="interest" type="text" class="form-control" name="fromPrice" tabindex="1"
+                                        value="<%= edit ? package.fromPrice : '' %>" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter price
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">To Price</label>
+                                        <input id="interest" type="text" class="form-control" name="toPrice" tabindex="1"
+                                        value="<%= edit ? package.toPrice : '' %>" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter price
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harsh_power">Commission</label>
+                                        <input id="harsh_power" type="number" step="any" class="form-control" name="commission" tabindex="1"
+                                        value="<%= edit ? package.commission : '' %>" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter harsh power
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="duration">Duration(Months)</label>
+                                        <input id="duration" type="number" class="form-control" name="duration" tabindex="1"
+                                        value="<%= edit ? package.duration : '' %>"required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter package duration
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="harsh_power">Admin Charge</label>
+                                        <input id="harsh_power" type="number" step="any" class="form-control" name="charge" tabindex="1"
+                                        value="<%= edit ? package.charge : '' %>" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter harsh power
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="duration">Bonus</label>
+                                        <input id="duration" type="text" class="form-control" name="bonus" tabindex="1"
+                                        value="<%= edit ? package.bonus : '' %>"required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please enter package Bonuses
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-primary mr-1"
+                                    type="submit"><%= edit ? 'Update' : 'Add Package' %></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<%- include("../partials/footer2") %>

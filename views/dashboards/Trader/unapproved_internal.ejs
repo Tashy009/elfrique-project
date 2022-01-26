@@ -1,0 +1,59 @@
+<!-- header -->
+<%- include("../../partials/header_admin") %>
+<%- include("../../partials/sidebar") %>
+
+<!-- Main Content -->
+<div class="main-content">
+    <%- include("../../partials/alerts") %>
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Internal Buy Transactions</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="table-1">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Amount</th>
+                                            <th>Coin Type</th>
+                                            <th>Quantity</th>
+                                            <th>Reference</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%  for (let i = 0; i < transactions.length; i++ ) { %>
+                                        <tr>
+                                            <td><%= i + 1 %></td>
+                                            <td><%= transactions[i].customerName %></td>
+                                            <td><%= transactions[i].customerEmail %></td>
+                                            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'NGN' }).format(transactions[i].nairaAmount.toFixed(3))  %></td>
+                                            <td><%= transactions[i].coin.name %></td>
+                                            <td><%= transactions[i].qty %></td>
+                                            <td><%= transactions[i].reference %></td>
+                                            <td><%= moment(transactions[i].createdAt).format("DD-MMM-YYYY") %></td>
+                                            <td>
+                                                <a href="/view/pending-internal/<%= transactions[i].id %>"
+                                                    class="btn btn-primary btn-pill">View</a>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<%- include("../../partials/footer2") %>

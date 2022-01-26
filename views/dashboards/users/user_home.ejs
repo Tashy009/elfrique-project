@@ -1,0 +1,204 @@
+<!-- header -->
+<%- include("../../partials/header") %>
+<%- include("../../partials/user_sidebar") %>
+           <!-- Main Content -->
+           <div class="main-content">
+               <div class="container-fluid">
+                   <%- include("../../partials/alerts") %>
+                   <!-- start page title -->
+                   <div class="row">
+                       <div class="col-12">
+                           <div class="page-title-box">
+                               <div class="page-title-right">
+                                  
+                               </div>
+                               <h4 class="page-title">Dashboard</h4>
+                               <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Login successful. Please activate 2-Factor Authentication by going to the <a href="/settings">Settings section</a>
+                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </div>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- end page title -->
+                  
+                   <div class="row">
+                       <div class="col-md-12">
+                        
+                           <div class="row">
+                            <% for(let i=0; i<coins.length; i++) { %>  
+                               <div class="col-lg-3">
+                                   <div class="card widget-flat">
+                                       <div class="card-body">
+                                           <div class="float-right">
+                                               <i class="uil-bill widget-icon"></i>
+                                           </div>
+                                           <h5 class="text-muted font-weight-normal mt-0" title="Number of Customers"><%= coins[i].coinTypes.name %></h5>
+                                           <h3 class="mt-3 mb-3"><%= coins[i].balance %> <%= coins[i].coinTypes.symbol %></h3>
+                                           <p class="mb-0 text-muted">
+                                               <span class="text-success"><a href="/sell/internal" class="text-success">Sell</a></span>
+                                               <span>Coin</span>
+                                           </p>
+                                       </div> <!-- end card-body-->
+                                   </div> <!-- end card-->
+                               </div> <!-- end col-->
+                               <% } %> 
+                               
+               
+                               <div class="col-lg-3">
+                                   <div class="card widget-flat">
+                                       <div class="card-body">
+                                           <div class="float-right">
+                                               <i class="uil-wallet widget-icon"></i>
+                                           </div>
+                                           <h5 class="text-muted font-weight-normal mt-0" title="Growth">Wallet Balance</h5>
+                                           <h3 class="mt-3 mb-3"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'NGN' }).format(wallet.toFixed(3))  %></h3>
+                                           <p class="mb-0 text-muted">
+                                            <span class="text-success"><a href="/withdraw" class="text-success">Withdraw</a></span>
+                                            <span>Money</span>
+                                        </p>
+                                       </div> <!-- end card-body-->
+                                   </div> <!-- end card-->
+                               </div> <!-- end col-->
+                           </div> <!-- end row -->
+               
+                       </div> <!-- end col -->
+                   </div>
+                   <!-- end row -->
+               
+                   <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mb-3">Crypto Analysis</h4>
+                                <script async="" src="https://static-v.tawk.to/709/app.js" charset="UTF-8" crossorigin="*"></script><script async="" src="https://embed.tawk.to/5ee795de9e5f694422909abf/default" charset="UTF-8" crossorigin="*"></script>
+                               <script src="https://widgets.coingecko.com/coingecko-coin-compare-chart-widget.js"></script>
+                            <coingecko-coin-compare-chart-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="usd" locale="en"></coingecko-coin-compare-chart-widget>
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+            
+                   
+                   </div>
+                   <!-- end row -->
+               
+               
+                   <div class="row">
+                       <div class="col-xl-6 col-lg-6 order-lg-2 order-xl-1">
+                           <div class="card">
+                               <div class="card-body">
+                                   <a href="/referrals" class="btn btn-sm btn-link float-right mb-3">View your referrals</a>
+                                   <h4 class="header-title mt-2">Your Referral Link</h4>
+                                   <p id='chat'></p>
+                                                   <div class="card-content">
+                                            <p></p>
+                                            <h2 class="font-18"><br> <h2 class="font-18"><a style="color:blue" href="<%= bitmint.website %><%= user.reference %>"><%= bitmint.website %><%= user.reference %></a></h2> </h2>
+                                            <p></p>
+                                        </div>
+                                                   </div> <!-- end card-body-->
+                           </div> <!-- end card-->
+                       </div> <!-- end col-->
+                       <div class="col-lg-6">
+                           <!-- <div class="card">
+                               <div class="card-body">
+                                   <h4 class="header-title">Investors Location</h4>
+                                   <div class="mb-4 mt-4">
+                                       <div id="world-map-markers" style="height: 224px"></div>
+                                   </div>
+                               </div>
+                           </div> end card -->
+                           <div class="card">
+                               <div class="card-body">
+                                   <h4 class="header-title">Exchange Rate</h4>
+                                   <div class="row justify-content-center">
+                                    <% for(let i=0; i<products.length; i++) { %>  
+                                       <div class="col-md-4">
+                                           <div class="mb-4 mt-4">
+                                               <h5><%= products[i].name  %></h5>
+                                               
+                                               <span class="text-muted font-13">1 <%= products[i].symbol  %></span>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-4">
+                                           <div class="mb-4 mt-4">
+                                               <h5>Dollar Rate</h5>
+                                               <p class="text-muted"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format((Number(products[i].dollarRate)).toFixed(3)) %> </p>
+                                               <!-- <span class="text-muted font-13">Investments</span> -->
+                                           </div>
+                                       </div>
+                                       <div class="col-md-4">
+                                           <div class="mb-4 mt-4">
+                                               <h5>Naira Rate</h5>
+                                               <p class="text-muted"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'NGN' }).format((Number(products[i].rate)).toFixed(3)) %> </p>
+                                           </div>
+                                       </div>
+                                       <% } %> 
+                                   </div>
+                               </div> <!-- end card-body-->
+                           </div> <!-- end card-->
+                       </div> <!-- end col-->
+                      
+                       <div class="col-md-6 stretch-card grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4>Notifications</h4>
+                            <% if (notifications.length > 0 ) { %>
+                                <ul class="icon-data-list">
+                                    <% for( let i = 0; i < notifications.length; i++ ) { %>
+                                        
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            <strong><%= notifications[i].message %></strong> 
+                                            <br>
+                                            <small><%= moment(notifications[i].createdAt).format("DD-MM-YYYY hh:mm A") %></small>
+                                            
+                                            <form action="/remove/notification" method="post">
+                                                <input type="hidden" id="notifyId" name="id" value="<%=  notifications[i].id %> ">
+                                                <button type="submit" class="close">
+                                                    <span aria-hidden="true" id="closeBtn">&times;</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    <% } %>
+                                 
+                                    
+                                 
+                                </ul>
+                            
+                            <% } else { %>
+                             <h4>No Active Notifications</h4>
+                             <% } %>
+                             
+                          </div>
+                        </div>
+                    </div>
+               
+                      
+                                                                      
+                                                                                               
+                                       <!-- end timeline -->
+                                  
+                               </div>
+                               <!-- end card-body -->
+                           </div>
+                           <!-- end card-->
+                       </div>
+                       <!-- end col -->
+                       
+                   </div>
+                   
+                   <!-- end row -->
+               
+               </div>
+           </div>
+           
+           
+          
+</div>
+
+<%- include("../../partials/user_footer") %>
+<script>
+    
+</script>
+
