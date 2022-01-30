@@ -10,8 +10,8 @@
   "production": {
     "username": "b3bc0d1ea02cd4",
     "password": "c2efb195",
-    "database": "us-cdbr-east-05.cleardb.net",
-    "host": "heroku_5ba1f3b7dfeb09f",
+    "database": "heroku_5ba1f3b7dfeb09f",
+    "host": "us-cdbr-east-05.cleardb.net",
     "dialect": "mysql"
   }
 }
