@@ -83,7 +83,7 @@ exports.createAdminUser = async (req, res, next) => {
       }
     }
   } catch (err) {
-    req.flash("waring", "Server Error!");
+    req.flash("warning", "Server Error!");
     res.redirect("back");
   }
 };
