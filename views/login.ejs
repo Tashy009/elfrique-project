@@ -12,6 +12,7 @@
 </head>
 <body class="bodyLogin">
     <main class="authMain">
+        <%- include("./partials/alerts") %>
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 text-area">
@@ -24,7 +25,7 @@
                     <h1 style="font-size: 35px; font-weight: 400;">Keep track of your activities.</h1>
                     <div class="btn-div">
                         <p>Don't have an account?</p>
-                        <a href="signup.html" class="btn-btn">Sign Up <i class="bi bi-box-arrow-in-right"></i></a>
+                        <a href="/signup" class="btn-btn">Sign Up <i class="bi bi-box-arrow-in-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2"></div>
@@ -33,27 +34,27 @@
                         <div class="header-form">
                             <h3>Log In To Your Account</h3>
                         </div>
-                        <form>
+                        <form action="/loginAdminUser" method="post">
                             <div class="row">
                                 <!--Email-->
                                 <div class="col-lg-12">
                                     <label for="email">Email</label>
-                                    <input type="email" placeholder="Enter email address" required>
+                                    <input type="email" placeholder="Enter email address" name="email" required>
                                 </div>
                                 <!--Password-->
                                 <div class="col-lg-12">
                                     <label for="password">Password</label>
-                                    <input type="password" placeholder="Enter password" required>
+                                    <input type="password" placeholder="Enter password" name="password"required>
                                 </div>
                                 <!--Forgot Password-->
                                 <div class="col-lg-12 forgot">
                                     <p>
-                                        <a href="forgot.html">Forgot Password?</a>
+                                        <a href="/forgot">Forgot Password?</a>
                                     </p>
                                 </div>
                                 <!--Submit Button-->
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit">Log In</button>
+                                    <button type="submit" name="submit">Log In</button>
                                 </div>
                             </div>
                         </form>

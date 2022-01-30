@@ -9,12 +9,20 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 
+const app = express();
 // local imports
 //const Users = require("./models").User
 //const parameters = require("./config/params");
 //const auth = require("./config/auth");
 const db = require("./database/db");
+const Authmiddleware = require("./middleware/Authmiddleware");
 
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 // imports initialization
 const Op = Sequelize.Op;
 
@@ -22,7 +30,7 @@ const Op = Sequelize.Op;
 const webRoute = require("./routes/webRoutes");
 
 // imports initalization
-const app = express();
+
 const server = http.createServer(app);
 let users = [];
 
@@ -44,12 +52,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
 
 app.use(morgan("dev"));
 // set up public folder
@@ -60,17 +62,13 @@ app.use(express.static(path.join(__dirname + "uploads")));
 app.use("/css", express.static(__dirname + "public/css"));
 app.use("/js", express.static(__dirname + "public/js"));
 app.use("/images", express.static(__dirname + "public/images"));
-app.use("/assests", express.static(__dirname + "public/assests3"));
+app.use("/assets", express.static(__dirname + "public/assets"));
 
 // routes
 app.use("/", webRoute);
 
 /* app.get("/", (req, res, next) => {
   res.render("signup2");
-});
-
-app.get("/login", (req, res, next) => {
-  res.render("login");
 }); */
 
 // 404 not found

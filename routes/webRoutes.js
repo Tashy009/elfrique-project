@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const flash = require("express-flash-messages");
-//const passport = require("passport");
+const passport = require("passport");
 const Sequelize = require("sequelize");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
@@ -27,6 +27,7 @@ const router = express.Router();
 //local import
 const Admin = require("../models/").adminuser;
 const AdminController = require("../controllers/admin.controller");
+const AuthMiddleware = require("../middleware/Authmiddleware");
 
 //middlewares
 
@@ -38,16 +39,43 @@ router.use(
   })
 );
 
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
+
 router.use(flash());
 
 //routes
+
+router.get("/", AuthMiddleware.redirectLogin, (req, res, next) => {
+  res.render("dashboards/index");
+});
+
+router.get("/dashboard", (req, res, next) => {
+  res.render("dashboards/index");
+});
+
 router.get("/signup", AdminController.signUpUser);
 //router.post("/admin", AdminController.loginAdmin);
 router.post("/createAdminUser", AdminController.createAdminUser);
 //router.post("/signup", [AuthMiddleware.redirectHome, AuthMiddleware.authVerirfication], AdminController.register);
 //router.get("/signup", AdminController.signup);
-router.get("/login", AdminController.adminLogin);
+router.get("/login", AuthMiddleware.redirectHome, AdminController.adminLogin);
 router.post("/loginAdminUser", AdminController.loginAdminUser);
+router.get("/forgot", AdminController.forgotPassword);
+router.get("/resetpassword", AdminController.resetPassword);
+/* router.get(
+  "/dashboard",
+  AuthMiddleware.redirectLogin,
+  AdminController.dashboard
+); */
 
 //router.get("/admin", AdminController.adminLogin);
 
