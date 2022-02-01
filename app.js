@@ -27,6 +27,7 @@ app.use(
 const Op = Sequelize.Op;
 
 // routes includes
+const apiRoute = require("./routes/apiRoute");
 const webRoute = require("./routes/webRoutes");
 
 // imports initalization
@@ -65,6 +66,7 @@ app.use("/images", express.static(__dirname + "public/images"));
 app.use("/assets", express.static(__dirname + "public/assets"));
 
 // routes
+app.use("/api/v1", apiRoute);
 app.use("/", webRoute);
 
 /* app.get("/", (req, res, next) => {
