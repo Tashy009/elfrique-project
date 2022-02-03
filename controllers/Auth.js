@@ -8,6 +8,7 @@ const nodemailer = require("nodemailer");
 //const sequelize = require("../config/db");
 const User = require("../models").adminuser;
 const ResetPasswords = require("../models").resetpassword;
+const profile = require("../models").profile;
 /* const Referrals = require("../models").Referral;
 const Product = require("../models").Product;
 const Coin = require("../models").Coin; */
@@ -44,6 +45,14 @@ exports.registerUser = async (req, res, next) => {
         email,
         password: hashPwd,
         referral_email,
+      });
+
+      const newProfile = await profile.create({
+        firstname,
+        lastname,
+        phonenumber,
+        email,
+        adminuserId: newUser.id,
       });
 
       let user_email = newUser.email;

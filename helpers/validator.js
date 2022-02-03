@@ -64,10 +64,44 @@ const resetPasswordValidation = () => {
   ];
 };
 
+const changePasswordValidation = () => {
+  return [
+    body("oldPassword", "Enter Old Password")
+      .not()
+      .isEmpty()
+      .isLength({ min: 5 }),
+    body("newPassword", "Enter New Password")
+      .not()
+      .isEmpty()
+      .isLength({ min: 5 }),
+    body("confirmpassword", "Passwords do not match").custom(
+      (value, { req }) => value === req.body.newPassword
+    ),
+  ];
+};
+
+const createVoteValidation = () => {
+  return [
+    body("title", "Enter Title").not().isEmpty(),
+    body("votelimit", "Enter votelimit").not().isEmpty(),
+    body("startdate", "Enter Start Date").not().isEmpty(),
+    body("closedate", "Enter End Date").not().isEmpty(),
+    body("fee", "Enter fee").not().isEmpty(),
+    body("type", "Enter Type").not().isEmpty(),
+    body("packagestatus", "Enter packagestatus").not().isEmpty(),
+    body("timezone", "Enter timezone").not().isEmpty(),
+    body("paymentgateway", "Enter description").not().isEmpty(),
+
+    //body("image", "Enter Image").not().isEmpty(),
+  ];
+};
+
 module.exports = {
   validate,
   okvalidate,
   registerValidation,
   loginValidation,
   resetPasswordValidation,
+  changePasswordValidation,
+  createVoteValidation,
 };

@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("adminusers", {
+    await queryInterface.createTable("profiles", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,21 +20,39 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
       },
-      password: {
+      accountnumber: {
         type: Sequelize.STRING,
       },
-      referral_email: {
+      accountname: {
         type: Sequelize.STRING,
       },
-      email_token: {
-        allowNull: true,
+      about: {
+        type: Sequelize.TEXT,
+      },
+      bankname: {
         type: Sequelize.STRING,
       },
-      activated: {
-        allowNull: true,
-        type: Sequelize.TINYINT,
-        defaultValue: 0,
+      gender: {
+        type: Sequelize.STRING,
       },
+      twitterURL: {
+        type: Sequelize.STRING,
+      },
+      facebookURL: {
+        type: Sequelize.STRING,
+      },
+      instagramURL: {
+        type: Sequelize.STRING,
+      },
+      adminuserId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "adminusers",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -46,6 +64,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("adminusers");
+    await queryInterface.dropTable("profiles");
   },
 };

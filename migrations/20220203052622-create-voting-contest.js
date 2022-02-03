@@ -1,39 +1,47 @@
 "use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("adminusers", {
+    await queryInterface.createTable("votingContests", {
       id: {
-        allowNull: false,
-        autoIncrement: true,
+        allowNull: true,
         primaryKey: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV1,
+      },
+      title: {
+        type: Sequelize.STRING,
+      },
+      type: {
+        type: Sequelize.STRING,
+      },
+      votelimit: {
+        type: Sequelize.STRING, //chanhe to date
+      },
+      startdate: {
+        type: Sequelize.STRING,
+      },
+      closedate: {
+        type: Sequelize.STRING,
+      },
+      timezone: {
+        type: Sequelize.STRING,
+      },
+      paymentgateway: {
+        type: Sequelize.STRING,
+      },
+      fee: {
+        type: Sequelize.STRING,
+      },
+      packagestatus: {
+        type: Sequelize.STRING,
+      },
+      adminuserId: {
         type: Sequelize.INTEGER,
-      },
-      firstname: {
-        type: Sequelize.STRING,
-      },
-      lastname: {
-        type: Sequelize.STRING,
-      },
-      phonenumber: {
-        type: Sequelize.STRING,
-      },
-      email: {
-        type: Sequelize.STRING,
-      },
-      password: {
-        type: Sequelize.STRING,
-      },
-      referral_email: {
-        type: Sequelize.STRING,
-      },
-      email_token: {
-        allowNull: true,
-        type: Sequelize.STRING,
-      },
-      activated: {
-        allowNull: true,
-        type: Sequelize.TINYINT,
-        defaultValue: 0,
+        references: {
+          model: "adminusers",
+          key: "id",
+        },
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("adminusers");
+    await queryInterface.dropTable("votingContests");
   },
 };
